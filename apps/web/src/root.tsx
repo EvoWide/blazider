@@ -13,7 +13,8 @@ import {
   Title,
 } from "solid-start"
 
-// @refresh reload
+import { HopeProvider } from '@hope-ui/solid'
+import { Layout } from "./components/Layout"
 import { Suspense } from "solid-js"
 
 export default function Root() {
@@ -25,15 +26,17 @@ export default function Root() {
         <Meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <Body>
-        <Suspense>
-          <ErrorBoundary>
-            <A href="/">Index</A>
-            <A href="/about">About</A>
-            <Routes>
-              <FileRoutes />
-            </Routes>
-          </ErrorBoundary>
-        </Suspense>
+        <HopeProvider>
+          <Suspense>
+            <ErrorBoundary>
+              <Layout>
+                <Routes>
+                  <FileRoutes />
+                </Routes>
+              </Layout>
+            </ErrorBoundary>
+          </Suspense>
+        </HopeProvider>
         <Scripts />
       </Body>
     </Html>
