@@ -1,6 +1,7 @@
 {
   "extends": "adonis-preset-ts/tsconfig.json",
   "include": [
+    "./.eslintrc.js",
     "**/*"
   ],
   "exclude": [
