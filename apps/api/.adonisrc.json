@@ -13,8 +13,8 @@
     "Contracts": "contracts"
   },
   "preloads": [
-    "./start/routes",
-    "./start/kernel"
+    "./start/kernel",
+    "./app/Domains/Sources/Infrastructure/routes"
   ],
   "providers": [
     "./providers/AppProvider",
