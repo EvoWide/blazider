@@ -1,7 +1,7 @@
-import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
+import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext';
 
 export default class DeploymentsController {
-  public async index(ctx: HttpContextContract) {
-    return "hello world"
+  public async index(_ctx: HttpContextContract) {
+    return 'hello world';
   }
 }
