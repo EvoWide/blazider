@@ -18,7 +18,8 @@
   ],
   "providers": [
     "./providers/AppProvider",
-    "@adonisjs/core"
+    "@adonisjs/core",
+    "./app/Domains/Sources/Infrastructure/Proxy/SourceProvider"
   ],
   "aceProviders": [
     "@adonisjs/repl"
