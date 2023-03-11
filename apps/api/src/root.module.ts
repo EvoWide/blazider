@@ -1,6 +1,5 @@
 import { MikroOrmModule } from '@mikro-orm/nestjs';
 import { Module } from '@nestjs/common';
-import { SourcesModule } from './sources/sources.module';
 
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { PostgreSqlDriver } from '@mikro-orm/postgresql';
@@ -8,6 +7,8 @@ import { SourceModel } from './sources/infrastructure/models/sources.entity';
 import { APP_INTERCEPTOR } from '@nestjs/core';
 import { ContextInterceptor } from 'libs/context/context.interceptor';
 import { ContextModule } from 'libs/context/context.module';
+import { SourcesModule } from './sources/infrastructure/sources.module';
+import { ClsModule } from 'nestjs-cls';
 
 @Module({
   imports: [
@@ -29,6 +30,10 @@ import { ContextModule } from 'libs/context/context.module';
     ContextModule.register(),
     ConfigModule.forRoot({
       isGlobal: true,
+    }),
+    ClsModule.forRoot({
+      global: true,
+      middleware: { mount: true },
     }),
   ],
   controllers: [],

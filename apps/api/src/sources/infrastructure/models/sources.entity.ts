@@ -1,7 +1,13 @@
-import { Entity, PrimaryKey } from '@mikro-orm/core';
+import { Entity, PrimaryKey, Property } from '@mikro-orm/core';
 
-@Entity()
+@Entity({ tableName: 'sources' })
 export class SourceModel {
-  @PrimaryKey()
+  @PrimaryKey({ type: 'uuid' })
   id: number;
+
+  @Property()
+  name: string;
+
+  @Property()
+  url: string;
 }

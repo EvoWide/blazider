@@ -5,8 +5,8 @@ import { GetRepositoriesUseCase } from '../usecases/getRepositories.usecase';
 export class SourcesController {
   constructor(private getRepositoriesUseCase: GetRepositoriesUseCase) {}
   @Get()
-  findAll() {
-    const useCase = this.getRepositoriesUseCase.execute();
-    return 'hello source';
+  async findAll() {
+    const useCase = await this.getRepositoriesUseCase.execute();
+    return useCase;
   }
 }

@@ -14,7 +14,7 @@ importers:
 
   apps/api:
     specifiers:
-      '@blazider/context': workspace:*
+      '@blazider/http': workspace:*
       '@fastify/static': ^6.9.0
       '@mikro-orm/core': ^5.6.13
       '@mikro-orm/nestjs': ^5.1.7
@@ -37,6 +37,7 @@ importers:
       class-validator: ^0.14.0
       eslint-config-custom: workspace:*
       jest: 29.3.1
+      nestjs-cls: ^3.2.1
       prettier: ^2.3.2
       reflect-metadata: ^0.1.13
       rxjs: ^7.2.0
@@ -49,7 +50,7 @@ importers:
       tsconfig-paths: 4.1.1
       typescript: ^4.7.4
     dependencies:
-      '@blazider/context': link:../../packages/context
+      '@blazider/http': link:../../packages/http
       '@fastify/static': 6.9.0
       '@mikro-orm/core': 5.6.13_iyxpgmywwod3p7wk5kpdyl5mpy
       '@mikro-orm/nestjs': 5.1.7_7bozqjijpeqirb2db3puwgruhe
@@ -63,6 +64,7 @@ importers:
       '@nestjs/swagger': 6.2.1_hawwmshqbw7nw32iema6jhpu5q
       class-transformer: 0.5.1
       class-validator: 0.14.0
+      nestjs-cls: 3.2.1_77foi4w27ghy47yutmnzv7krjy
       reflect-metadata: 0.1.13
       rxjs: 7.8.0
       tsconfig: link:../../packages/tsconfig
@@ -122,18 +124,6 @@ importers:
       typescript: 4.9.5
       vite: 3.2.5_@types+node@18.14.1
 
-  packages/context:
-    specifiers:
-      '@nestjs/common': ^9.0.0
-      rxjs: ^7.2.0
-      tsconfig: workspace:*
-      typescript: latest
-    dependencies:
-      '@nestjs/common': 9.3.9_rxjs@7.8.0
-      rxjs: 7.8.0
-      tsconfig: link:../tsconfig
-      typescript: 4.9.5
-
   packages/eslint-config-custom:
     specifiers:
       '@typescript-eslint/eslint-plugin': ^5.0.0
@@ -156,6 +146,17 @@ importers:
       eslint-plugin-solid: 0.10.0_7kw3g6rralp5ps6mg3uyzz6azm
     devDependencies:
       typescript: 4.9.5
+
+  packages/http:
+    specifiers:
+      axios: ^1.3.4
+      eslint-config-custom: workspace:*
+      tsconfig: workspace:*
+    dependencies:
+      axios: 1.3.4
+      tsconfig: link:../tsconfig
+    devDependencies:
+      eslint-config-custom: link:../eslint-config-custom
 
   packages/tsconfig:
     specifiers: {}
@@ -2023,28 +2024,6 @@ packages:
       - webpack-cli
     dev: true
 
-  /@nestjs/common/9.3.9_rxjs@7.8.0:
-    resolution: {integrity: sha512-GshTD9Xz+wD2em6NyzU4NXw5IXMUmapgDgD+iuj6XL0258hvDwODmNk37mBBnZvTZlqER+krvIUKnS34etqF/A==}
-    peerDependencies:
-      cache-manager: <=5
-      class-transformer: '*'
-      class-validator: '*'
-      reflect-metadata: ^0.1.12
-      rxjs: ^7.1.0
-    peerDependenciesMeta:
-      cache-manager:
-        optional: true
-      class-transformer:
-        optional: true
-      class-validator:
-        optional: true
-    dependencies:
-      iterare: 1.2.1
-      rxjs: 7.8.0
-      tslib: 2.5.0
-      uid: 2.0.1
-    dev: false
-
   /@nestjs/common/9.3.9_welcnyot5bzd5wa2aovbkxpi4i:
     resolution: {integrity: sha512-GshTD9Xz+wD2em6NyzU4NXw5IXMUmapgDgD+iuj6XL0258hvDwODmNk37mBBnZvTZlqER+krvIUKnS34etqF/A==}
     peerDependencies:
@@ -3033,7 +3012,6 @@ packages:
 
   /asynckit/0.4.0:
     resolution: {integrity: sha512-Oei9OH4tRh0YqU3GxhX79dM/mwVgvbZJaSNaRk+bshkj0S5cfHcgYakreBjrHwatXKbz+IoIdYLxrKim2MjW0Q==}
-    dev: true
 
   /atomic-sleep/1.0.0:
     resolution: {integrity: sha512-kNOjDqAh7px0XWNI+4QbzoiR/nTkHAWNud2uvnJquD1/x5a7EQZMJT0AczqK0Qn67oY/TTQ1LbUKajZpp3I9tQ==}
@@ -3058,9 +3036,19 @@ packages:
   /axios/0.25.0_debug@4.3.4:
     resolution: {integrity: sha512-cD8FOb0tRH3uuEe6+evtAbgJtfxr7ly3fQjYcMcuPlgkwVS9xboaVIpcDV+cYQe+yGykgwZCs1pzjntcGa6l5g==}
     dependencies:
-      follow-redirects: 1.15.2_debug@4.3.4
+      follow-redirects: 1.15.2
     transitivePeerDependencies:
       - debug
+
+  /axios/1.3.4:
+    resolution: {integrity: sha512-toYm+Bsyl6VC5wSkfkbbNB6ROv7KY93PEBBL6xyDczaIHasAiv4wPqQ/c4RjoQzipxRD2W5g21cOqQulZ7rHwQ==}
+    dependencies:
+      follow-redirects: 1.15.2
+      form-data: 4.0.0
+      proxy-from-env: 1.1.0
+    transitivePeerDependencies:
+      - debug
+    dev: false
 
   /babel-jest/29.4.3_@babel+core@7.21.0:
     resolution: {integrity: sha512-o45Wyn32svZE+LnMVWv/Z4x0SwtLbh4FyGcYtR20kIWd+rdrDZ9Fzq8Ml3MYLD+mZvEdzCjZsCnYZ2jpJyQ+Nw==}
@@ -3471,7 +3459,6 @@ packages:
     engines: {node: '>= 0.8'}
     dependencies:
       delayed-stream: 1.0.0
-    dev: true
 
   /commander/2.20.3:
     resolution: {integrity: sha512-GpVkmM8vF2vQUkj2LvZmD35JxeJOLCwJ9cUkugyk2nuhbv3+mJvpLYYt+0+USMxE+oj+ey/lJEnhZw75x/OMcQ==}
@@ -3666,7 +3653,6 @@ packages:
   /delayed-stream/1.0.0:
     resolution: {integrity: sha512-ZySD7Nf91aLB0RxL4KGrKHBXl7Eds1DAmEdcoVawXnLD7SDhpNgtuII2aAkg7a7QS41jxPSZ17p4VdGnMHk3MQ==}
     engines: {node: '>=0.4.0'}
-    dev: true
 
   /depd/2.0.0:
     resolution: {integrity: sha512-g7nH6P6dyDioJogAAGprGpCtVImJhpPk/roCzdb3fIh61/s/nPsfR6onyMwkCAR/OlC3yBC0lESvUoQEAssIrw==}
@@ -4742,7 +4728,7 @@ packages:
       tabbable: 5.3.3
     dev: false
 
-  /follow-redirects/1.15.2_debug@4.3.4:
+  /follow-redirects/1.15.2:
     resolution: {integrity: sha512-VQLG33o04KaQ8uYi2tVNbdrWp1QWxNNea+nmIB4EVM28v0hmP17z7aG1+wAkNzVq4KeXTq3221ye5qTJP91JwA==}
     engines: {node: '>=4.0'}
     peerDependencies:
@@ -4750,8 +4736,6 @@ packages:
     peerDependenciesMeta:
       debug:
         optional: true
-    dependencies:
-      debug: 4.3.4
 
   /for-each/0.3.3:
     resolution: {integrity: sha512-jqYfLp7mo9vIyQf8ykW2v7A+2N4QjeCeI5+Dz9XraiO1ign81wjiH7Fb9vSOWvQfNtmSa4H2RoQTrrXivdUZmw==}
@@ -4793,7 +4777,6 @@ packages:
       asynckit: 0.4.0
       combined-stream: 1.0.8
       mime-types: 2.1.35
-    dev: true
 
   /formidable/2.1.2:
     resolution: {integrity: sha512-CM3GuJ57US06mlpQ47YcunuUZ9jpm8Vx+P2CGt2j7HpgkKZO/DJYQ0Bobim8G6PFQmK5lOqOOdUXboU+h73A4g==}
@@ -6285,6 +6268,17 @@ packages:
     resolution: {integrity: sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==}
     dev: true
 
+  /nestjs-cls/3.2.1_77foi4w27ghy47yutmnzv7krjy:
+    resolution: {integrity: sha512-wvtlrjiFHGy7CgqxwE2vHaPhBV5SIxJsYmV31twG+NhP7HVb3MJdp7RC+NdP/ckca6ys68JV23ExK355EGnprw==}
+    engines: {node: '>=12.17.0'}
+    peerDependencies:
+      '@nestjs/common': '> 7.0.0 < 10'
+      '@nestjs/core': '> 7.0.0 < 10'
+    dependencies:
+      '@nestjs/common': 9.3.9_welcnyot5bzd5wa2aovbkxpi4i
+      '@nestjs/core': 9.3.9_q6agyr4hwia55oswpsa7zjxcpm
+    dev: false
+
   /node-abort-controller/3.1.1:
     resolution: {integrity: sha512-AGK2yQKIjRuqnc6VkX2Xj5d+QW8xZ87pa1UK6yA6ouUyuxfHuMP6umE5QK7UmTeOAymo+Zx1Fxiuw9rVx8taHQ==}
     dev: true
@@ -6716,6 +6710,10 @@ packages:
     dependencies:
       forwarded: 0.2.0
       ipaddr.js: 1.9.1
+
+  /proxy-from-env/1.1.0:
+    resolution: {integrity: sha512-D+zkORCbA9f1tdWRK0RaCR3GPv50cMxcrz4X8k5LTSUD1Dkw47mKJEZQNunItRTkWwgtaUSo1RVFRIG9ZXiFYg==}
+    dev: false
 
   /pump/3.0.0:
     resolution: {integrity: sha512-LwZy+p3SFs1Pytd/jYct4wpv49HiYCqd9Rlc5ZVdk0V+8Yzv6jR5Blk3TRmPL1ft69TxP0IMZGJ+WPFU2BFhww==}
